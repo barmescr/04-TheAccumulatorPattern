@@ -9,7 +9,7 @@ Additionally, it emphasizes that you must
 before you can implement a solution to the problem in Python. 
   
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher, Mark Hays,
-         Aaron Wilkin, their colleagues, and Cleo.
+         Aaron Wilkin, their colleagues, and Cleo Barmes.
 """  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
@@ -112,6 +112,7 @@ def draw_squares_from_circle(n, circle, window):
     ###########################################################################
     # -------------------------------------------------------------------------
 
+    
 
 def run_test_draw_circles_from_rectangle():
     """ Tests the   draw_circles_from_rectangle  function. """
