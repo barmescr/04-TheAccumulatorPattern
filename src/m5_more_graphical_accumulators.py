@@ -130,7 +130,7 @@ def run_test_draw_circles_from_rectangle():
     """ Tests the   draw_circles_from_rectangle  function. """
     print()
     print('--------------------------------------------------')
-    print('Testing the  draw_circles_from_rectangle  function:')
+    print('Testing the  draw_Circles_from_Rectangle  function:')
     print('  See the graphics windows that pop up.')
     print('--------------------------------------------------')
 
@@ -151,32 +151,38 @@ def run_test_draw_circles_from_rectangle():
     # -------------------------------------------------------------------------
     # TWO tests on ONE window.
     # -------------------------------------------------------------------------
-    title = 'Tests 1 and 2 of DRAW_CIRCLES_FROM_SQUARE: '
-    title = title + ' 7 little squares from green circle, 4 big squares'
-    window1 = rg.RoseWindow(650, 350, title)
+    title = 'Tests 1 and 2 of DRAW_CIRCLES_FROM_rectangle: '
+    window1 = rg.RoseWindow(720, 500, title)
 
     # Test 1:
-    circle = rg.Circle(rg.Point(100, 100), 20)
-    circle.fill_color = 'green'
-    draw_squares_from_circle(7, circle, window1)
+    rectangle = rg.Rectangle(rg.Point(400,250),rg.Point(440,325))
+    rectangle.fill_color = 'green'
+    rectangle.outline_color = 'black'
+    rectangle.outline_thickness = 5
+    draw_circles_from_rectangle(4, 5, rectangle, window1)
 
     # Test 2:
-    circle = rg.Circle(rg.Point(350, 70), 50)
-    draw_squares_from_circle(4, circle, window1)
+    rectangle = rg.Rectangle(rg.Point(500,400),rg.Point(600,450))
+    rectangle.fill_color = 'blue'
+    rectangle.outline_color = 'red'
+    rectangle.outline_thickness = 3
+    draw_circles_from_rectangle(8, 3, rectangle, window1)
+
     window1.close_on_mouse_click()
 
     # -------------------------------------------------------------------------
     # A third test on ANOTHER window.
     # -------------------------------------------------------------------------
 
-    title = 'Test 3 of DRAW_SQUARES_FROM_CIRCLE: '
-    title += ' 20 teeny squares from blue circle!'
-    window2 = rg.RoseWindow(525, 300, title)
+    title = 'Test 3 of DRAW_Circles_FROM_Rectangle: '
+    window2 = rg.RoseWindow(620, 380, title)
 
     # Test 3:
-    circle = rg.Circle(rg.Point(50, 50), 10)
-    circle.fill_color = 'blue'
-    draw_squares_from_circle(20, circle, window2)
+    rectangle = rg.Rectangle(rg.Point(350, 280), rg.Point(375, 330))
+    rectangle.fill_color = 'blue'
+    rectangle.outline_color = 'brown'
+    rectangle.outline_thickness = 3
+    draw_circles_from_rectangle(6, 10, rectangle, window2)
 
     window2.close_on_mouse_click()
 
@@ -234,22 +240,19 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
     ###########################################################################
     # -------------------------------------------------------------------------
 
-    centerx = circle.center.x
-    centery = circle.center.y
+    left = rectangle.get_upper_left_corner()
+    right = rectangle.get_lower_right_corner()
+    center = 
 
-    s = rg.Square(rg.Point(centerx, centery), (2 * circle.radius))
-    s.attach_to(window)
+    rec = rg.Rectangle(left,right)
+    rec.fill_color = rectangle.fill_color
+    rec.outline_color = rectangle.outline_color
+    rec.attach_to(window)
 
-    c = rg.Circle(rg.Point(centerx, centery), circle.radius)
-    c.attach_to(window)
+    for k in range(m):
+        crl = rg.Circle()
 
-    for k in range(n + 1):
-
-        centerx = centerx + (circle.radius)
-        centery = centery + (circle.radius)
     window.render()
-
-
 
 def run_test_draw_lines_from_rectangles():
     """ Tests the   draw_lines_from_rectangles  function. """
