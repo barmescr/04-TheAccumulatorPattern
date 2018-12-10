@@ -362,7 +362,7 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
       :type window: rg.RoseWindow
       """
     # -------------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -379,6 +379,8 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
     left1 = rectangle1.get_upper_left_corner()
     right1 = rectangle1.get_lower_right_corner()
     center1 = rectangle1.get_center()
+    width = rectangle1.get_width()
+    height = rectangle1.get_height()
 
     left2 = rectangle2.get_upper_left_corner()
     right2 = rectangle2.get_lower_right_corner()
@@ -399,15 +401,20 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
     line1.color = rectangle1.outline_color
     line1.thickness = 5
 
-    corner1 = rec1.get_lower_left_corner()
-    corner2 = center2
+    corner1 = rec1.get_center()
+    corner2 = rec2.get_center()
 
-    for k in range(n):
-        corner1.y = corner1.y - (center1.y - left1.y)
-        corner1.x = corner1.x - (center1.x - left1.x)
-        corner2.x = corner2.x - (center1.x - corner1.x)
-        corner2.y = corner2.y - (corner1.y - center1.y)
+    for k in range(n - 1):
+        corner1.y = corner1.y + (height / 2)
+        corner1.x = corner1.x - (width / 2)
+        corner2.x = corner2.x - (width / 2)
+        corner2.y = corner2.y + (height / 2)
         line_n = rg.Line(corner1,corner2)
+        line_n.thickness = 5
+        if k % 2 == 0:
+            line_n.color = rectangle2.outline_color
+        if k % 2 == 1:
+            line_n.color = rectangle1.outline_color
         line_n.attach_to(window)
         window.render()
 
